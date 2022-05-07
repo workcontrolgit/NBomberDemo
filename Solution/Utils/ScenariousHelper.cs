@@ -27,17 +27,17 @@ namespace Utils
 
         public static Scenario GetDaysAgoTestScenario(HttpClient httpClient)
         {
-            var callDateNowStep = Step.Create("call datenow", async (context) =>
+            var callDateNowStep = Step.Create("call daysAgo", async (context) =>
             {
                 var queryString = GetQueryString();
-                var response = await httpClient.GetAsync($"datenow{queryString}");
+                var response = await httpClient.GetAsync($"daysAgo{queryString}");
                 if (response.IsSuccessStatusCode)
                     return Response.Ok(statusCode: (int)response.StatusCode);
                 else
                     return Response.Fail(statusCode: (int)response.StatusCode);
             });
 
-            var scenario = ScenarioBuilder.CreateScenario("Call DateNow Api", callDateNowStep)
+            var scenario = ScenarioBuilder.CreateScenario("Call DaysAgo Api", callDateNowStep)
                 .WithWarmUpDuration(TimeSpan.FromSeconds(5))
                 .WithLoadSimulations(
                     LoadSimulation.NewInjectPerSec(_rate: 100, _during: TimeSpan.FromSeconds(30))

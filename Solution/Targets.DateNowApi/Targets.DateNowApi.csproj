@@ -9,5 +9,9 @@
 	<ItemGroup>
 		<InternalsVisibleTo Include="Cases.xUnitInMemoryTest" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	</ItemGroup>
 	
 </Project>
